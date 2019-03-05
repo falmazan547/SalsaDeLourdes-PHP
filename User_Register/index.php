@@ -48,6 +48,16 @@ switch ($action){
             $last_name = trim($last_name);
             $uname = trim($uname);
             
+            $error_first = '';
+            $error_last = '';
+            $error_username = '';
+            $error_email = '';
+            $error_password_digit = '';
+            $error_password_upper = '';
+            $error_password_lower = '';
+            $error_password_length = '';
+            $error_password_special = '';
+            
             include 'index.php';
         }
         else{
