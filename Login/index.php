@@ -59,6 +59,12 @@ switch ($action){
         }
         die();
         break;
+    case 'logout':
+        session_destroy();
+        
+        header("Location: ../index.php");
+        die();
+        break;
     
         
 }
