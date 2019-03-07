@@ -17,17 +17,16 @@ class users_db {
         return password_verify($pw, $pwHash);
         
     }
-    public static function add_user($fName, $lName, $email, $user, $pw) {
+    public static function add_user($fName, $lName, $email, $pw) {
         $db = Database::getDB();
         $query = 'INSERT INTO users
-                    (Email, Fname, Lname, Password, Username)
+                    (email, fName, lName, Password)
                     VALUES
-                    (:email, :fName, :lName, :Password, :userName)';
+                    (:email, :fName, :lName, :Password)';
         $statement = $db->prepare($query);        
         $statement->bindValue(':fName', $fName);
         $statement->bindValue(':lName', $lName);
         $statement->bindValue(':email', $email);
-        $statement->bindValue(':userName', $user);
         $statement->bindValue(':Password', $pw);
         $statement->execute();
         $statement->closeCursor();
@@ -44,25 +43,13 @@ class users_db {
         $statement->closeCursor();
         $user = new user(
                 $rows['userID'], 
-                $rows['fName'], 
-                $rows['lName'], 
+                $rows['firstName'], 
+                $rows['lastName'], 
                 $rows['email'],
-                $rows['userName'], 
                 $rows['password'],
-                $rows['profilePicture']);
+                $rows['shipAddressID'],
+                $rows['billAddressID']);
 
-        return $user;
-    }
-    public static function username_exists($userName) {
-        $db = Database::getDB();
-        $query = 'Select Username
-                    from users 
-                    where Username = :userName';
-        $statement = $db->prepare($query);
-        $statement->bindValue(':userName', $userName);
-        $statement->execute();
-        $user = $statement->fetch();
-        $statement->closeCursor();
         return $user;
     }
     public static function email_exists($email) {

@@ -2,16 +2,16 @@
 
 class user {
 
-    private $userID, $fName, $lName, $email, $userName, $password, $profilepic;
+    private $userID, $fName, $lName, $email, $password, $shipAddressID, $billAddressID;
     
-    public function __construct($userID = -1, $fName, $lName, $email, $userName, $password, $profilepic) {
+    public function __construct($userID = -1, $fName, $lName, $email, $password, $shipAddressID, $billAddressID) {
         $this->userID = $userID;
         $this->fName = $fName;
         $this->lName = $lName;
         $this->email = $email;
-        $this->userName = $userName;
         $this->password = $password;
-        $this->profilepic = $profilepic;
+        $this->shipAddressID = $shipAddressID;
+        $this->billAddressID = $billAddressID;
     }
     public function getUserID() {
         return $this->userID;
@@ -29,16 +29,16 @@ class user {
         return $this->email;
     }
 
-    public function getUserName() {
-        return $this->userName;
-    }
-
     public function getPassword() {
         return $this->password;
     }
 
-    public function getProfilepic() {
-        return $this->profilepic;
+    public function getShipAddressID() {
+        return $this->shipAddressID;
+    }
+
+    public function getBillAddressID() {
+        return $this->billAddressID;
     }
 
     public function setUserID($userID) {
@@ -57,17 +57,15 @@ class user {
         $this->email = $email;
     }
 
-    public function setUserName($userName) {
-        $this->userName = $userName;
-    }
-
     public function setPassword($password) {
         $this->password = $password;
     }
 
-    public function setProfilepic($profilepic) {
-        $this->profilepic = $profilepic;
+    public function setShipAddressID($shipAddressID) {
+        $this->shipAddressID = $shipAddressID;
     }
 
-
+    public function setBillAddressID($billAddressID) {
+        $this->billAddressID = $billAddressID;
+    }
 }

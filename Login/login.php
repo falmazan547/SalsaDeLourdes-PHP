@@ -1,6 +1,6 @@
 <?php include '../View/Header.php'; ?>
 <?php include '../View/Nav.php'; ?>
-
+<?php var_dump($_SESSION['userID']) ?>
 <div class="container">
     <h2>Login</h2>
     <form class="form-horizontal" method="post" action="index.php">

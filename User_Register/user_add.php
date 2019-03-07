@@ -39,17 +39,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="username">Username:</label>
-            <div class="col-sm-10">          
-                <input type="text" class="form-control" value="<?php xecho($username); ?>" placeholder="Enter Username" name="username">
-                <p class="error">
-                    <?php if (!empty($error_username)) { ?>
-                        <?php xecho($error_username); ?>
-                    <?php } ?>
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="control-label col-sm-2" for="password">Password:</label>
             <div class="col-sm-10">          
                 <input type="password" class="form-control" value="<?php xecho($password); ?>" placeholder="Enter Password" name="password">

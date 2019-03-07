@@ -14,7 +14,7 @@ if ($action === NULL) {
 }
 switch ($action){
     case 'reg_page':
-        if(!isset($_SESSION['user_id'])){
+        if(!isset($_SESSION['userID'])){
             if (!isset($first_name)) {
                 $first_name = '';
             }
@@ -33,28 +33,24 @@ switch ($action){
             include 'user_add.php';
         }
         else{
-            header("Location: home.php");
+            header("Location: ../index.php");
         }
         die();
         break;
         
     case 'add_user':
-        if(!isset($_SESSION['id'])){
+        if(!isset($_SESSION['userID'])){
             $first_name = filter_input(INPUT_POST, 'first_name');
             $last_name = filter_input(INPUT_POST, 'last_name');
-            $username = filter_input(INPUT_POST, 'username');
             $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
             $password = filter_input(INPUT_POST, 'password');
             $first_name = trim($first_name);
             $last_name = trim($last_name);
-            $username = trim($username);
             
-            $user_exists = users_db::username_exists($username);
-            $emailexists = users_db::email_exists($email);
+            $email_exists = users_db::email_exists($email);
             
             $error_first = '';
             $error_last = '';
-            $error_username = '';
             $error_email = '';
             $error_password_digit = '';
             $error_password_upper = '';
@@ -76,20 +72,10 @@ switch ($action){
             
             if(!validation::isBlank($email)){
                 $error_email = 'You must enter your email address';
-            } else if(!$email){
-                $error_email = 'You must enter a valid email address';
+            } else if($email_exists !== false){
+                $error_email = 'Email already exists';
             } else if (!validation::isMaxLength($email, 320)) {
                 $error_email = "Email must be less than 321 characters.";
-            }
-            
-            if (!validation::isBlank($username)) {
-                $error_username = 'You must enter a user name';
-            } else if ($user_exists !== false) {
-                $error_username = 'Username already taken';
-            } else if (!validation::isValidUserName($username)) {
-                $error_username = "Username can only contain letters and numbers.";
-            } else if (!validation::isBetweenLength($username, 4, 30)) {
-                $error_username = "Username must be between 4 and 30 characters.";
             }
             
             if (!validation::isMinLength($password, 10)) {
@@ -109,8 +95,7 @@ switch ($action){
             }
             
             if (
-                    $error_first != '' || $error_last != '' || 
-                    $error_username != '' || $error_email != '' || 
+                    $error_first != '' || $error_last != '' || $error_email != '' || 
                     $error_password_length != '' || $error_password_lower != '' || 
                     $error_password_upper != '' || $error_password_digit != '' || 
                     $error_password_special != ''
@@ -119,7 +104,7 @@ switch ($action){
                 exit();
             } else {
                 $hashPassword = password_hash($password, PASSWORD_BCRYPT, array('cost' => 11));
-                users_db::add_user($first_name, $last_name, $email, $username, $hashPassword);
+                users_db::add_user($first_name, $last_name, $email, $hashPassword);
                 include 'confirmation.php';
             }
             die();

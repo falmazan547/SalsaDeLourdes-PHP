@@ -27,7 +27,7 @@ switch ($action){
             }
             include 'login.php';
         } else {
-            header("Location: index.php?action=home");
+            header("Location: ../index.php");
         }
         die();
         break;
@@ -37,8 +37,8 @@ switch ($action){
             if (!isset($password)) {
                 $password = '';
             }
-            if (!isset($username)) {
-                $username = '';
+            if (!isset($email)) {
+                $email = '';
             }if (!isset($login_error)) {
                 $login_error = '';
             }
@@ -48,14 +48,14 @@ switch ($action){
                 $user = users_db::get_user_by_email($email);
                 $_SESSION['userID'] = $user->getUserID();
                 var_dump($_SESSION['userID']);
-                include 'index.php';
+                include '../index.php';
             } else {
                 $login_error = "Invalid username or password";
                 
                 include 'login.php';
             }
         } else{
-            header("Location: index.php?action=home");
+            header("Location: ../index.php");
         }
         die();
         break;
