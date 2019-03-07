@@ -31,8 +31,8 @@
     </ul>
     
     <ul class="navbar-nav mr-auto mr-sm-2">
-        <li><a class="nav-link" href="/<?php echo htmlspecialchars($basedir) ?>/User_Register/index.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a class="nav-link" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a class="nav-link" href="/<?php echo htmlspecialchars($basedir) ?>/User_Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a class="nav-link" href="/<?php echo htmlspecialchars($basedir) ?>/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
 </nav>

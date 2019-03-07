@@ -1,1 +1,7 @@
-
+.error{
+    font-size: 0.75em;
+    color: red;
+}
+.button{
+    background-color: #efefef !important;
+}
