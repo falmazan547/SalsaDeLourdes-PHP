@@ -44,12 +44,12 @@ class users_db {
         $statement->closeCursor();
         $user = new user(
                 $rows['userID'], 
-                $rows['Fname'], 
-                $rows['Lname'], 
-                $rows['Email'],
-                $rows['Username'], 
-                $rows['Password'],
-                $rows['ProfilePicture']);
+                $rows['fName'], 
+                $rows['lName'], 
+                $rows['email'],
+                $rows['userName'], 
+                $rows['password'],
+                $rows['profilePicture']);
 
         return $user;
     }
