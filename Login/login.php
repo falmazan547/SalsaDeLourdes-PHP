@@ -1,6 +1,5 @@
 <?php include '../View/Header.php'; ?>
 <?php include '../View/Nav.php'; ?>
-<?php var_dump($_SESSION['userID']) ?>
 <div class="container">
     <h2>Login</h2>
     <form class="form-horizontal" method="post" action="index.php">
@@ -19,7 +18,7 @@
                     <?php if (!empty($login_error)) { ?>
                         <?php xecho($login_error); ?>
                     <?php } ?>
-                </p>
+                    </p>
             </div>
         </div>
         <div class="form-group">        

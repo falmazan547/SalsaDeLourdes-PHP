@@ -27,6 +27,7 @@ switch ($action){
             }
             include 'login.php';
         } else {
+            session_destroy();
             header("Location: ../index.php");
         }
         die();
@@ -47,7 +48,7 @@ switch ($action){
             if (users_db::login($email, $password)) {
                 $user = users_db::get_user_by_email($email);
                 $_SESSION['userID'] = $user->getUserID();
-                var_dump($_SESSION['userID']);
+                
                 include '../index.php';
             } else {
                 $login_error = "Invalid username or password";

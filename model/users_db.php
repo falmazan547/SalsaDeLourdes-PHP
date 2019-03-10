@@ -52,6 +52,27 @@ class users_db {
 
         return $user;
     }
+    public static function get_user_by_id($id) {
+        $db = Database::getDB();
+        $query = 'SELECT * 
+                    FROM users
+                    WHERE userID = :id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        $rows = $statement->fetch();
+        $statement->closeCursor();
+        $user = new user(
+                $rows['userID'], 
+                $rows['firstName'], 
+                $rows['lastName'], 
+                $rows['email'],
+                $rows['password'],
+                $rows['shipAddressID'],
+                $rows['billAddressID']);
+
+        return $user;
+    }
     public static function email_exists($email) {
         $db = Database::getDB();
         $query = 'Select email
@@ -63,6 +84,24 @@ class users_db {
         $email = $statement->fetch();
         $statement->closeCursor();
         return $email;
+    }
+    public static function update_user($id,$firstName,$lastName,$email){
+     $db = Database::getDB();
+        $query = 'update users
+            set firstName = :firstName,
+            lastName = :lastName,
+            email = :email
+            where userID = :id;';
+            
+             
+        $statement = $db->prepare($query);
+        $statement->bindValue(':id', $id);
+        $statement->bindValue(':firstName', $firstName);
+        $statement->bindValue(':lastName', $lastName);
+        $statement->bindValue(':email', $email);
+        $statement->execute();
+        $statement->closeCursor();
+        
     }
 }
 
