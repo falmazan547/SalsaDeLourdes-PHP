@@ -42,7 +42,8 @@ class users_db {
         $rows = $statement->fetch();
         $statement->closeCursor();
         $user = new user(
-                $rows['userID'], 
+                $rows['userID'],                
+                $rows['userType'],
                 $rows['firstName'], 
                 $rows['lastName'], 
                 $rows['email'],
@@ -63,7 +64,8 @@ class users_db {
         $rows = $statement->fetch();
         $statement->closeCursor();
         $user = new user(
-                $rows['userID'], 
+                $rows['userID'],
+                $rows['userType'],
                 $rows['firstName'], 
                 $rows['lastName'], 
                 $rows['email'],

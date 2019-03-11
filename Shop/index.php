@@ -4,6 +4,8 @@ session_start();
 require_once('../model/database.php');
 require_once('../model/user.php');
 require_once('../model/users_db.php');
+require_once('../model/product_db.php');
+require('../model/product.php');
 require('../model/xecho.php');
 require('../model/validation.php');
 
@@ -12,29 +14,15 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
     $action = filter_input(INPUT_GET, 'action');
     if ($action === NULL) {
-        $action = 'profile_page';
+        $action = 'products_page';
     }
 }
 switch ($action){
-    case 'profile_page':
-        if(isset($_SESSION['userID'])){
-            $user = users_db::get_user_by_id($_SESSION['userID']);
-            if (!isset($first_name)) {
-                $first_name = $user->getFName();
-            }
-            if (!isset($last_name)) {
-                $last_name = $user->getLName();
-            }
-
-            if (!isset($email)) {
-                $email = $user->getEmail();
-            }
-            
-            include 'profile.php';
-        }
-        else{
-            header("Location: ../home.php");
-        }
+    case 'products_page':
+        
+            $products = product_db::get_all_products();
+            include 'products.php';
+        
         die();
         break;
         

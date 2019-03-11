@@ -2,10 +2,11 @@
 
 class user {
 
-    private $userID, $fName, $lName, $email, $password, $shipAddressID, $billAddressID;
+    private $userID, $userType, $fName, $lName, $email, $password, $shipAddressID, $billAddressID;
     
-    public function __construct($userID = -1, $fName, $lName, $email, $password, $shipAddressID, $billAddressID) {
+    public function __construct($userID = -1, $userType, $fName, $lName, $email, $password, $shipAddressID, $billAddressID) {
         $this->userID = $userID;
+        $this->userType = $userType;
         $this->fName = $fName;
         $this->lName = $lName;
         $this->email = $email;
@@ -15,6 +16,10 @@ class user {
     }
     public function getUserID() {
         return $this->userID;
+    }
+    
+    public function getUserType() {
+        return $this->userType;
     }
 
     public function getFName() {
@@ -43,6 +48,10 @@ class user {
 
     public function setUserID($userID) {
         $this->userID = $userID;
+    }
+    
+    public function setUserType($userType) {
+        $this->userType = $userType;
     }
 
     public function setFName($fName) {

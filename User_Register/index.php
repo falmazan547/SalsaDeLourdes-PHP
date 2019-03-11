@@ -1,10 +1,11 @@
 <?php
+session_start();
+
 require('../model/database.php');
 require('../model/users_db.php');
 require('../model/xecho.php');
 require('../model/validation.php');
 
-session_start();
 $action = filter_input(INPUT_POST, 'action');
 if ($action === NULL) {
     $action = filter_input(INPUT_GET, 'action');
@@ -33,7 +34,7 @@ switch ($action){
             include 'user_add.php';
         }
         else{
-            header("Location: ../index.php");
+            header("Location: ../home.php");
         }
         die();
         break;
