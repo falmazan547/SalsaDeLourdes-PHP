@@ -23,7 +23,7 @@ $basedir = array_pop($basedir);
                 <li><a href="/<?php echo htmlspecialchars($basedir) ?>/Shop">Shop</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-link" href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                <li><a class="nav-link" href="/<?php echo htmlspecialchars($basedir) ?>/Cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 <?php if(!isset($_SESSION['userID'])) {?>
                     <li><a class="nav-link" href="/<?php echo htmlspecialchars($basedir) ?>/User_Register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                     <li><a class="nav-link" href="/<?php echo htmlspecialchars($basedir) ?>/Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
