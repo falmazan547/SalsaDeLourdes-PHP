@@ -18,7 +18,7 @@ $basedir = array_pop($basedir);
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/<?php echo htmlspecialchars($basedir) ?>">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="/<?php echo htmlspecialchars($basedir) ?>/About">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="/<?php echo htmlspecialchars($basedir) ?>/Shop">Shop</a></li>
             </ul>

@@ -32,15 +32,17 @@ switch ($action){
         
         if (!isset($_SESSION['cart']) ) {
             $_SESSION['cart'] = array();
-            
-            
         }
-        
-        
-        if (isset($_SESSION['cart'][$productID])) {
-            
+        if (isset($_SESSION['cart'])){
             $_SESSION['cart'][$productID] += round($quantity, 0);
+        }else{
+            if (isset($_SESSION['cart'][$productID])) {
+            
+                $_SESSION['cart'][$productID] = round($quantity, 0);
+            }
         }
+        
+        
         
         
         
