@@ -1,7 +1,14 @@
 <?php include '../View/Header.php'; ?>
 <?php include '../View/Nav.php'; ?>
 
+<div class="product-image">
+    <div class="home-text">
+        <h1 style="font-size: 9em;">Taste and See</h1>
+        
+    </div>
+</div>
 <div class="container">
+    <h1>Choose a Salsa</h1>
     <?php foreach ($products as $p) : ?>
         <div class="col-sm-4">
             <img id="shop-img" src="../<?php /* @var $p products */ xecho($p->getImage()); ?>">

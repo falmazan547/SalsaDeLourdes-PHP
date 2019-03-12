@@ -2,6 +2,7 @@
 $basedir = dirname(__DIR__);
 $basedir = explode("\\", $basedir);
 $basedir = array_pop($basedir);
+
 ?>
 
 <nav class="navbar navbar-default">
@@ -17,9 +18,7 @@ $basedir = array_pop($basedir);
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/<?php echo htmlspecialchars($basedir) ?>">Home</a></li>
-                <li><a href="/<?php echo htmlspecialchars($basedir) ?>/About">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/<?php echo htmlspecialchars($basedir) ?>">Home</a></li>
                 <li><a href="/<?php echo htmlspecialchars($basedir) ?>/Shop">Shop</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

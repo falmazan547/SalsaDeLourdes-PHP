@@ -96,11 +96,7 @@ switch ($action){
             $ship_zip = '';
             $ship_phone = '';
             $use_shipping = '';
-            $bill_line1 = '';
-            $bill_line2 = '';
-            $bill_city = '';
-            $bill_state = '';
-            $bill_zip = '';
+            
             $user = users_db::get_user_by_id($_SESSION['userID']);
             
             

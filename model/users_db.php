@@ -20,12 +20,12 @@ class users_db {
     public static function add_user($fName, $lName, $email, $pw) {
         $db = Database::getDB();
         $query = 'INSERT INTO users
-                    (email, fName, lName, Password)
+                    (email, firstName, lastName, Password)
                     VALUES
-                    (:email, :fName, :lName, :Password)';
+                    (:email, :firstName, :lastName, :Password)';
         $statement = $db->prepare($query);        
-        $statement->bindValue(':fName', $fName);
-        $statement->bindValue(':lName', $lName);
+        $statement->bindValue(':firstName', $fName);
+        $statement->bindValue(':lastName', $lName);
         $statement->bindValue(':email', $email);
         $statement->bindValue(':Password', $pw);
         $statement->execute();

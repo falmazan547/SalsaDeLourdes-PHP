@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -32,23 +33,13 @@ switch ($action){
         
         if (!isset($_SESSION['cart']) ) {
             $_SESSION['cart'] = array();
-        }
-        if (isset($_SESSION['cart'])){
-            $_SESSION['cart'][$productID] += round($quantity, 0);
         }else{
             if (isset($_SESSION['cart'][$productID])) {
-            
+                $_SESSION['cart'][$productID] += round($quantity, 0);
+            }else{
                 $_SESSION['cart'][$productID] = round($quantity, 0);
-            }
+            }            
         }
-        
-        
-        
-        
-        
-        var_dump($_SESSION['cart']);
-        
-        
         
         $products = product_db::get_all_products();
         include 'products.php';

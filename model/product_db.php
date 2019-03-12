@@ -17,8 +17,7 @@ class product_db{
             foreach ($rows as $value) {
                 $p = new product(
                         $value['categoryID'],
-                        $value['productName'],
-                        
+                        $value['productName'],                        
                         $value['price'], 
                         $value['description'],
                         $value['date'], 
@@ -43,25 +42,20 @@ class product_db{
             $statement = $db->prepare($query);
             $statement->bindValue(':productID', $productID);
             $statement->execute();
-            $rows = $statement->fetch();
+            $value = $statement->fetch();
             $statement->closeCursor();
+            $product = new product(
+                    $value['categoryID'],
+                    $value['productName'],
+                    $value['price'], 
+                    $value['description'],
+                    $value['date'], 
+                    $value['image'],
+                    $value['categoryName']);
             
-            $products = array();
-            foreach ($rows as $value) {
-                $p = new product(
-                        $value['categoryID'],
-                        $value['productName'],                        
-                        $value['price'], 
-                        $value['description'],
-                        $value['date'], 
-                        $value['image'],
-                        $value['categoryName']);
-                $p->setProductID($value['productID']);
-                $products[] = $p;
-            }
+             $product->setProductID($value['productID']);
             
-            
-            return $products;
+            return $product;
     }
     
     
